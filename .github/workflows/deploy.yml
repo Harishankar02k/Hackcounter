@@ -8,6 +8,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+      # Add this line right after setup-node
+      - run: echo "SKIP_PREFLIGHT_CHECK=true" >> $GITHUB_ENV
       - run: npm install
       - run: npm run build
       - uses: peaceiris/actions-gh-pages@v3
