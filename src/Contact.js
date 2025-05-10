@@ -170,7 +170,7 @@ const handleSubmit = async (e) => {
               <a href="https://twitter.com" className="social-link" aria-label="Twitter">
                 <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" className="social-icon" />
               </a>
-              <a href="https://www.linkedin.com" className="social-link" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/company/hackcounter" className="social-link" aria-label="LinkedIn">
                 <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" className="social-icon" />
               </a>
               <a href="https://www.instagram.com" className="social-link" aria-label="Instagram">
