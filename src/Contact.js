@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import './Contact.css';
 
 const Contact = ({ darkMode }) => {
@@ -10,7 +9,7 @@ const Contact = ({ darkMode }) => {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,9 +19,25 @@ const Contact = ({ darkMode }) => {
     }));
   };
 
+  const validateForm = () => {
+    let errors = {};
+    if (!formData.name) errors.name = 'Name is required';
+    if (!formData.email) {
+      errors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      errors.email = 'Email is invalid';
+    }
+    if (!formData.message) errors.message = 'Message is required';
+    return errors;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+    const errors = validateForm();
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
 
     try {
       const response = await fetch('https://formspree.io/f/mjvnerae', {
@@ -40,13 +55,12 @@ const Contact = ({ darkMode }) => {
       if (response.ok) {
         setSubmitted(true);
         setFormData({ name: '', email: '', message: '' });
+        setFormErrors({});
       } else {
         throw new Error('Form submission failed');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -88,7 +102,9 @@ const Contact = ({ darkMode }) => {
                     value={formData.name}
                     onChange={handleChange}
                     required
+                    placeholder="Enter your full name"
                   />
+                  {formErrors.name && <span className="error">{formErrors.name}</span>}
                 </div>
                 <div className="form-group">
                   <label htmlFor="email">Email Address</label>
@@ -99,7 +115,9 @@ const Contact = ({ darkMode }) => {
                     value={formData.email}
                     onChange={handleChange}
                     required
+                    placeholder="Enter your email address"
                   />
+                  {formErrors.email && <span className="error">{formErrors.email}</span>}
                 </div>
                 <div className="form-group">
                   <label htmlFor="message">Your Message</label>
@@ -110,11 +128,11 @@ const Contact = ({ darkMode }) => {
                     value={formData.message}
                     onChange={handleChange}
                     required
+                    placeholder="Write your message here"
                   ></textarea>
+                  {formErrors.message && <span className="error">{formErrors.message}</span>}
                 </div>
-                <button type="submit" className="btn" disabled={loading}>
-                  {loading ? 'Sending...' : 'Send Message'}
-                </button>
+                <button type="submit" className="btn">Send Message</button>
               </form>
             )}
           </div>
@@ -143,18 +161,18 @@ const Contact = ({ darkMode }) => {
               </div>
             </div>
             <div className="social-links">
-              <Link to="/" className="social-link" aria-label="Facebook">
+              <a href="https://www.facebook.com" className="social-link" aria-label="Facebook">
                 <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook" className="social-icon" />
-              </Link>
-              <Link to="/" className="social-link" aria-label="Twitter">
+              </a>
+              <a href="https://twitter.com" className="social-link" aria-label="Twitter">
                 <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" className="social-icon" />
-              </Link>
-              <Link to="/" className="social-link" aria-label="LinkedIn">
+              </a>
+              <a href="https://www.linkedin.com" className="social-link" aria-label="LinkedIn">
                 <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" className="social-icon" />
-              </Link>
-              <Link to="/" className="social-link" aria-label="Instagram">
+              </a>
+              <a href="https://www.instagram.com" className="social-link" aria-label="Instagram">
                 <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" className="social-icon" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>
