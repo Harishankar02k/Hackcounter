@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './Home.css';
 
 const Home = ({ darkMode }) => {
@@ -56,7 +57,6 @@ const Home = ({ darkMode }) => {
     }
   ];
 
-  // Placeholder image URLs
   const placeholderImages = {
     hero: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     service: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
@@ -73,7 +73,7 @@ const Home = ({ darkMode }) => {
         e.target.src = placeholderImages.service;
         break;
       case 'testimonial':
-        default:
+      default:
         e.target.src = placeholderImages.testimonial;
     }
   };
@@ -86,8 +86,8 @@ const Home = ({ darkMode }) => {
           <h1>Advanced Cybersecurity <span className="highlight">Solutions</span></h1>
           <p className="hero-text">Protecting your digital assets with cutting-edge security.</p>
           <div className="hero-buttons">
-            <a href="/services" className="btn">Explore Services</a>
-            <a href="/contact" className="btn btn-outline">Get Audit</a>
+            <Link to="/services" className="btn">Explore Services</Link>
+            <Link to="/contact" className="btn btn-outline">Get Audit</Link>
           </div>
         </div>
         <div className="hero-image">
@@ -119,7 +119,7 @@ const Home = ({ darkMode }) => {
                 <div className="service-icon">{service.icon}</div>
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
-                <a href="/services" className="btn btn-outline">Learn More</a>
+                <Link to="/services" className="btn btn-outline">Learn More</Link>
               </div>
             </div>
           ))}
@@ -175,7 +175,7 @@ const Home = ({ darkMode }) => {
           <p>
             Contact our security experts today for a free consultation and threat assessment.
           </p>
-          <a href="/contact" className="btn">Get Protected Now</a>
+          <Link to="/contact" className="btn">Get Protected Now</Link>
         </div>
       </section>
     </div>
