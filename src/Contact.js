@@ -1,14 +1,16 @@
 /* eslint-disable */
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import './Contact.css';
 
-const Contact = () => {
+const Contact = ({ darkMode }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,6 +22,7 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const response = await fetch('https://formspree.io/f/mjvnerae', {
@@ -38,10 +41,12 @@ const Contact = () => {
         setSubmitted(true);
         setFormData({ name: '', email: '', message: '' });
       } else {
-        console.error('Form submission failed with status:', response.status);
+        throw new Error('Form submission failed');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -58,7 +63,7 @@ const Contact = () => {
         <div className="hero-image">
           <img 
             src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
-            alt="Cybersecurity experts illustration" 
+            alt="Contact Cybersecurity Experts" 
           />
         </div>
       </section>
@@ -107,7 +112,9 @@ const Contact = () => {
                     required
                   ></textarea>
                 </div>
-                <button type="submit" className="btn">Send Message</button>
+                <button type="submit" className="btn" disabled={loading}>
+                  {loading ? 'Sending...' : 'Send Message'}
+                </button>
               </form>
             )}
           </div>
@@ -118,14 +125,14 @@ const Contact = () => {
               <div className="info-icon">📧</div>
               <div>
                 <h4>Email</h4>
-                <p><a href="mailto:harishankar2me@gmail.com">harishankar2me@gmail.com</a></p>
+                <p>harishankar2me@gmail.com</p>
               </div>
             </div>
             <div className="info-item">
               <div className="info-icon">📱</div>
               <div>
                 <h4>Phone</h4>
-                <p><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+                <p>+1 (555) 123-4567</p>
               </div>
             </div>
             <div className="info-item">
@@ -135,20 +142,19 @@ const Contact = () => {
                 <p>123 Security Ave, Cyber City</p>
               </div>
             </div>
-
             <div className="social-links">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook logo" className="social-icon" />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter logo" className="social-icon" />
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn logo" className="social-icon" />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram logo" className="social-icon" />
-              </a>
+              <Link to="/" className="social-link" aria-label="Facebook">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook" className="social-icon" />
+              </Link>
+              <Link to="/" className="social-link" aria-label="Twitter">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" className="social-icon" />
+              </Link>
+              <Link to="/" className="social-link" aria-label="LinkedIn">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" className="social-icon" />
+              </Link>
+              <Link to="/" className="social-link" aria-label="Instagram">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" className="social-icon" />
+              </Link>
             </div>
           </div>
         </div>
