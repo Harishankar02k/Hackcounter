@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './AboutUs.css';
 
 const AboutUs = ({ darkMode }) => {
@@ -10,13 +11,13 @@ const AboutUs = ({ darkMode }) => {
       image: "https://randomuser.me/api/portraits/men/32.jpg"
     },
     {
-      name: "Hero Rajput",
+      name: "Hiro Rajput",
       role: "Chief Security Officer",
       bio: "Former security architect at Fortune 500 companies. Expert in security frameworks and compliance.",
       image: "https://randomuser.me/api/portraits/women/44.jpg"
     },
     {
-      name: "Hiro Singh",
+      name: "Hero Singh",
       role: "Malware Analyst",
       bio: "Reverse engineering specialist with a focus on advanced persistent threats and zero-day vulnerabilities.",
       image: "https://randomuser.me/api/portraits/women/44.jpg"
@@ -135,7 +136,7 @@ const AboutUs = ({ darkMode }) => {
           <p>
             Contact our team today to discuss your security needs and how we can help protect your business.
           </p>
-          <a href="/contact" className="btn">Get in Touch</a>
+          <Link to="/contact" className="btn">Get in Touch</Link>
         </div>
       </section>
     </div>
@@ -143,7 +144,3 @@ const AboutUs = ({ darkMode }) => {
 };
 
 export default AboutUs;
-
-
-
-
