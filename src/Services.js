@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './Services.css';
 
 const Services = ({ darkMode }) => {
@@ -85,7 +86,7 @@ const Services = ({ darkMode }) => {
         <div className="hero-image">
           <img 
             src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
-            alt="Cybersecurity Services" 
+            alt="Cybersecurity concept showing connected devices and secure infrastructure" 
           />
         </div>
       </section>
@@ -99,7 +100,7 @@ const Services = ({ darkMode }) => {
         <div className="services-grid">
           {services.map((service, index) => (
             <div className="card service" key={index}>
-              <div className="service-icon">{service.icon}</div>
+              <div className="service-icon" aria-hidden="true">{service.icon}</div>
               <h3>{service.title}</h3>
               <p>{service.description}</p>
               <ul className="service-details">
@@ -107,7 +108,7 @@ const Services = ({ darkMode }) => {
                   <li key={i}>{detail}</li>
                 ))}
               </ul>
-              <a href="/contact" className="btn btn-outline">Learn More</a>
+              <Link to="/contact" className="btn btn-outline">Learn More</Link>
             </div>
           ))}
         </div>
@@ -134,7 +135,7 @@ const Services = ({ darkMode }) => {
           <p>
             Contact us today to discuss how we can help protect your business from cyber threats.
           </p>
-          <a href="/contact" className="btn">Get Started</a>
+          <Link to="/contact" className="btn">Get Started</Link>
         </div>
       </section>
     </div>
