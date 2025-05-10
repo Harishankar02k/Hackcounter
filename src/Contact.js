@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import './Contact.css';
 
-const Contact = ({ darkMode }) => {
+const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -38,13 +38,12 @@ const Contact = ({ darkMode }) => {
         setSubmitted(true);
         setFormData({ name: '', email: '', message: '' });
       } else {
-        throw new Error('Form submission failed');
+        console.error('Form submission failed with status:', response.status);
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      }
     }
-  
+  };
 
   return (
     <div className="contact-page">
@@ -59,7 +58,7 @@ const Contact = ({ darkMode }) => {
         <div className="hero-image">
           <img 
             src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
-            alt="Contact Cybersecurity Experts" 
+            alt="Cybersecurity experts illustration" 
           />
         </div>
       </section>
@@ -119,14 +118,14 @@ const Contact = ({ darkMode }) => {
               <div className="info-icon">📧</div>
               <div>
                 <h4>Email</h4>
-                <p>harishankar2me@gmail.com</p>
+                <p><a href="mailto:harishankar2me@gmail.com">harishankar2me@gmail.com</a></p>
               </div>
             </div>
             <div className="info-item">
               <div className="info-icon">📱</div>
               <div>
                 <h4>Phone</h4>
-                <p>+1 (555) 123-4567</p>
+                <p><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
               </div>
             </div>
             <div className="info-item">
@@ -136,18 +135,19 @@ const Contact = ({ darkMode }) => {
                 <p>123 Security Ave, Cyber City</p>
               </div>
             </div>
+
             <div className="social-links">
-              <a href="#" className="social-link" aria-label="Facebook">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook" className="social-icon" />
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook logo" className="social-icon" />
               </a>
-              <a href="#" className="social-link" aria-label="Twitter">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" className="social-icon" />
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter logo" className="social-icon" />
               </a>
-              <a href="#" className="social-link" aria-label="LinkedIn">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" className="social-icon" />
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn logo" className="social-icon" />
               </a>
-              <a href="#" className="social-link" aria-label="Instagram">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" className="social-icon" />
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram logo" className="social-icon" />
               </a>
             </div>
           </div>
