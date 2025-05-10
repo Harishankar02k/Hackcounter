@@ -10,13 +10,13 @@ const AboutUs = ({ darkMode }) => {
       image: "https://randomuser.me/api/portraits/men/32.jpg"
     },
     {
-      name: "Divya Rajput",
+      name: "Hero Rajput",
       role: "Chief Security Officer",
       bio: "Former security architect at Fortune 500 companies. Expert in security frameworks and compliance.",
       image: "https://randomuser.me/api/portraits/women/44.jpg"
     },
     {
-      name: "Shalu Kumari",
+      name: "Hiro Singh",
       role: "Malware Analyst",
       bio: "Reverse engineering specialist with a focus on advanced persistent threats and zero-day vulnerabilities.",
       image: "https://randomuser.me/api/portraits/women/44.jpg"
