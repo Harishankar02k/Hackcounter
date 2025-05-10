@@ -31,38 +31,41 @@ const Contact = ({ darkMode }) => {
     return errors;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const errors = validateForm();
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      return;
-    }
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  const errors = validateForm();
+  if (Object.keys(errors).length > 0) {
+    setFormErrors(errors);
+    return;
+  }
 
-    try {
-      const response = await fetch('https://formspree.io/f/mjvnerae', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-          _replyto: formData.email,
-          _subject: `New Contact from ${formData.name} - Hackcounter Website`
-        }),
-      });
+  try {
+    const response = await fetch('https://formspree.io/f/mnndzebn', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        ...formData,
+        _replyto: formData.email,
+        _subject: `New Contact from ${formData.name} - Hackcounter Website`
+      }),
+    });
 
-      if (response.ok) {
-        setSubmitted(true);
-        setFormData({ name: '', email: '', message: '' });
-        setFormErrors({});
-      } else {
-        throw new Error('Form submission failed');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
+    if (response.ok) {
+      setSubmitted(true);
+      setFormData({ name: '', email: '', message: '' });
+      setFormErrors({});
+    } else {
+      // Add detailed error logging here
+      const errorData = await response.json();
+      console.error('Error submitting form:', errorData);
+      throw new Error('Form submission failed');
     }
-  };
+  } catch (error) {
+    console.error('Error submitting form:', error);
+  }
+};
 
   return (
     <div className="contact-page">
