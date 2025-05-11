@@ -164,9 +164,9 @@ const handleSubmit = async (e) => {
               </div>
             </div>
             <div className="social-links">
-              <a href="https://www.facebook.com" className="social-link" aria-label="Facebook">
-                <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook" className="social-icon" />
-              </a>
+            <a href="https://www.youtube.com/@Hackcounter-2me" className="social-link" aria-label="YouTube">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" alt="YouTube" className="social-icon" />
+            </a>
               <a href="https://twitter.com" className="social-link" aria-label="Twitter">
                 <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" className="social-icon" />
               </a>
