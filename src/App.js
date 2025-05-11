@@ -45,7 +45,7 @@ function App() {
       <div className={`app-container ${darkMode ? 'dark' : 'light'}`}>
         <nav className={`navbar ${isScrolled ? "scrolled" : ""} ${darkMode ? "dark" : "light"}`}>
           <Link to="/" className="nav-brand" onClick={handleRouteChange}>
-            {"< Hackcounter />"}
+            {"Hackcounter"}
           </Link>
           <ul className={`nav-links ${mobileMenuOpen ? "active" : ""}`}>
             <li><Link to="/" onClick={handleRouteChange}>Home</Link></li>
