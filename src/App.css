@@ -274,7 +274,7 @@ main {
 
 /* Section Styles */
 .section {
-  padding: 4rem 0;
+  padding: 5rem 0;
 }
 
 .section-title {
@@ -347,6 +347,6 @@ main {
   }
   
   .section {
-    padding: 1.5rem 0;
+    padding: 4.5rem 0;
   }
 }
